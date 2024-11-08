@@ -18,14 +18,21 @@ public class Product {
     @Override
     public String toString() {
         return "- " + name +
-               " " + formatCurrency() + "원" +
-               " " + quantity + "개" +
+               " " + formatCurrency() +
+               " " + displayQuantity() +
                " " + displayPromotion();
     }
 
     private String formatCurrency() {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
-        return decimalFormat.format(price);
+        return decimalFormat.format(price) + "원";
+    }
+
+    private String displayQuantity() {
+        if (quantity == 0) {
+            return "재고 없음";
+        }
+        return quantity + "개";
     }
 
     private String displayPromotion() {
