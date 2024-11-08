@@ -28,6 +28,8 @@ public class ProductLoaderTest {
             writer.write("콜라,1000,10,탄산2+1");
             writer.newLine();
             writer.write("사이다,1000,8,null");
+            writer.newLine();
+            writer.write("오렌지주스,2000,0,MD추천상품");
         }
 
         FileLineReader fileLineReader = new FileLineReader();
@@ -48,11 +50,13 @@ public class ProductLoaderTest {
 
         Product product1 = new Product("콜라", 1000, 10, "탄산2+1");
         Product product2 = new Product("사이다", 1000, 8, "null");
+        Product product3 = new Product("오렌지주스", 2000, 0, "MD추천상품");
 
         List<Product> products = productLoader.loadProducts(filePath);
 
-        assertEquals(2, products.size());
+        assertEquals(3, products.size());
         assertEquals(product1.toString(), products.get(0).toString());
         assertEquals(product2.toString(), products.get(1).toString());
+        assertEquals(product3.toString(), products.get(2).toString());
     }
 }

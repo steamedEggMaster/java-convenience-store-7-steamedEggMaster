@@ -26,6 +26,8 @@ public class FileLineReaderTest {
             writer.write("콜라,1000,10,탄산2+1");
             writer.newLine();
             writer.write("콜라,1000,10,null");
+            writer.newLine();
+            writer.write("사이다,2000,0,MD추천상품");
         }
     }
 
@@ -40,8 +42,9 @@ public class FileLineReaderTest {
     void 파일_읽기를_제대로_수행하는지_테스트() {
         List<String> lines = fileLineReader.readLines(tempFile.getAbsolutePath());
 
-        assertEquals(2, lines.size());
+        assertEquals(3, lines.size());
         assertEquals("콜라,1000,10,탄산2+1", lines.get(0));
         assertEquals("콜라,1000,10,null", lines.get(1));
+        assertEquals("사이다,2000,0,MD추천상품", lines.get(2));
     }
 }
