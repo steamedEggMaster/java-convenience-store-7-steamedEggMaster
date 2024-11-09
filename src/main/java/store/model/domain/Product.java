@@ -15,6 +15,14 @@ public class Product {
         this.promotion = promotion;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return "- " + name +
