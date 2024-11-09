@@ -1,7 +1,7 @@
 package store.view;
 
 import java.util.List;
-import store.domain.Product;
+import store.model.domain.Product;
 
 public class OutputView {
     private static final String GREETING_MESSAGE = "안녕하세요. W편의점입니다.";

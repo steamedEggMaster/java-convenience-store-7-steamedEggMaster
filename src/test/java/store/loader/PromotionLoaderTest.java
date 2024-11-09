@@ -11,10 +11,10 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import store.domain.Product;
-import store.domain.Promotion;
-import store.io.FileLineReader;
-import store.parser.PromotionParser;
+import store.model.domain.Promotion;
+import store.model.io.FileLineReader;
+import store.model.loader.PromotionLoader;
+import store.model.parser.PromotionParser;
 
 public class PromotionLoaderTest {
     private File tempFile;

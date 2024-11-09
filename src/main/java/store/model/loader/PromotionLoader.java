@@ -1,10 +1,10 @@
-package store.loader;
+package store.model.loader;
 
 import java.util.ArrayList;
 import java.util.List;
-import store.domain.Promotion;
-import store.io.FileLineReader;
-import store.parser.PromotionParser;
+import store.model.domain.Promotion;
+import store.model.io.FileLineReader;
+import store.model.parser.PromotionParser;
 
 public class PromotionLoader {
     private final FileLineReader fileLineReader;

@@ -1,6 +1,6 @@
-package store.parser;
+package store.model.parser;
 
-import store.domain.Product;
+import store.model.domain.Product;
 
 public class ProductParser {
     public Product parse(String line) {

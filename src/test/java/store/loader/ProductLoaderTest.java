@@ -10,9 +10,10 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import store.domain.Product;
-import store.io.FileLineReader;
-import store.parser.ProductParser;
+import store.model.domain.Product;
+import store.model.io.FileLineReader;
+import store.model.loader.ProductLoader;
+import store.model.parser.ProductParser;
 
 public class ProductLoaderTest {
     private File tempFile;

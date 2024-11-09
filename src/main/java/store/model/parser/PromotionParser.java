@@ -1,7 +1,7 @@
-package store.parser;
+package store.model.parser;
 
 import java.time.LocalDate;
-import store.domain.Promotion;
+import store.model.domain.Promotion;
 
 public class PromotionParser {
     public Promotion parse(String line) {

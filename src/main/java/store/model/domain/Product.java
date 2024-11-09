@@ -1,4 +1,4 @@
-package store.domain;
+package store.model.domain;
 
 import java.text.DecimalFormat;
 

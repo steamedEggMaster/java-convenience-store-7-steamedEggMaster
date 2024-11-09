@@ -1,10 +1,10 @@
-package store.loader;
+package store.model.loader;
 
 import java.util.ArrayList;
 import java.util.List;
-import store.domain.Product;
-import store.io.FileLineReader;
-import store.parser.ProductParser;
+import store.model.domain.Product;
+import store.model.io.FileLineReader;
+import store.model.parser.ProductParser;
 
 public class ProductLoader {
     private final FileLineReader fileLineReader;
