@@ -33,9 +33,7 @@ public class ProductLoaderTest {
             writer.write("오렌지주스,2000,0,MD추천상품");
         }
 
-        FileLineReader fileLineReader = new FileLineReader();
-        ProductParser productParser = new ProductParser();
-        productLoader = new ProductLoader(fileLineReader, productParser);
+        productLoader = new ProductLoader();
     }
 
     @AfterEach

@@ -10,9 +10,9 @@ public class ProductLoader {
     private final FileLineReader fileLineReader;
     private final ProductParser productParser;
 
-    public ProductLoader(FileLineReader fileLineReader, ProductParser productParser) {
-        this.fileLineReader = fileLineReader;
-        this.productParser = productParser;
+    public ProductLoader() {
+        this.fileLineReader = new FileLineReader();
+        this.productParser = new ProductParser();
     }
 
     public List<Product> loadProducts(String filePath) {

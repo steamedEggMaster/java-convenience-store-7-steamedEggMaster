@@ -10,9 +10,9 @@ public class PromotionLoader {
     private final FileLineReader fileLineReader;
     private final PromotionParser promotionParser;
 
-    public PromotionLoader(FileLineReader fileLineReader, PromotionParser promotionParser) {
-        this.fileLineReader = fileLineReader;
-        this.promotionParser = promotionParser;
+    public PromotionLoader() {
+        this.fileLineReader = new FileLineReader();
+        this.promotionParser = new PromotionParser();
     }
 
     public List<Promotion> loadPromotions(String filePath) {

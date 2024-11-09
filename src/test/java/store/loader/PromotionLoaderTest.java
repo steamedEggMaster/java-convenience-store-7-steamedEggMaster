@@ -30,9 +30,7 @@ public class PromotionLoaderTest {
             writer.write("탄산2+1,2,1,2024-01-01,2024-12-31");
         }
 
-        FileLineReader fileLineReader = new FileLineReader();
-        PromotionParser promotionParser = new PromotionParser();
-        promotionLoader = new PromotionLoader(fileLineReader, promotionParser);
+        promotionLoader = new PromotionLoader();
     }
 
     @AfterEach
