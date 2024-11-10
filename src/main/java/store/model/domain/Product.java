@@ -31,7 +31,7 @@ public class Product {
         return promotion;
     }
 
-    public void decrementQuantity(int quantity) {
+    public void decrementInventory(int quantity) {
         this.inventory -= quantity;
     }
 
