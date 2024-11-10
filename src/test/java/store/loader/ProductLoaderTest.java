@@ -6,11 +6,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import store.model.domain.Product;
+import store.model.domain.Promotion;
 import store.model.io.FileLineReader;
 import store.model.loader.ProductLoader;
 import store.model.parser.ProductParser;
@@ -18,6 +20,7 @@ import store.model.parser.ProductParser;
 public class ProductLoaderTest {
     private File tempFile;
     private ProductLoader productLoader;
+    private List<Promotion> promotions;
 
     @BeforeEach
     void setUp() throws IOException {
@@ -34,6 +37,13 @@ public class ProductLoaderTest {
         }
 
         productLoader = new ProductLoader();
+
+        promotions = List.of(
+            new Promotion("탄산2+1", 2, 1,
+                LocalDate.of(2024, 1, 1), LocalDate.of(2024, 12, 31)),
+            new Promotion("MD추천상품", 1, 1,
+                LocalDate.of(2024, 1, 1), LocalDate.of(2024, 12, 31))
+        );
     }
 
     @AfterEach
@@ -51,7 +61,7 @@ public class ProductLoaderTest {
         Product product2 = new Product("사이다", 1000, 8, "null");
         Product product3 = new Product("오렌지주스", 2000, 0, "MD추천상품");
 
-        List<Product> products = productLoader.loadProducts(filePath);
+        List<Product> products = productLoader.loadProducts(filePath, promotions);
 
         assertEquals(3, products.size());
         assertEquals(product1.toString(), products.get(0).toString());
