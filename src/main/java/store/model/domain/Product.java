@@ -23,6 +23,10 @@ public class Product {
         return quantity;
     }
 
+    public String getPromotion() {
+        return promotion;
+    }
+
     @Override
     public String toString() {
         return "- " + name +

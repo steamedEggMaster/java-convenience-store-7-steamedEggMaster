@@ -3,6 +3,7 @@ package store.model.loader;
 import java.util.ArrayList;
 import java.util.List;
 import store.model.domain.Product;
+import store.model.domain.Promotion;
 import store.model.io.FileLineReader;
 import store.model.parser.ProductParser;
 
@@ -15,16 +16,23 @@ public class ProductLoader {
         this.productParser = new ProductParser();
     }
 
-    public List<Product> loadProducts(String filePath) {
-        List<Product> products = new ArrayList<>();
-        List<String> lines = fileLineReader.readLines(filePath);
+    public List<Product> loadProducts(String filePath, List<Promotion> promotions) {
+        List<String> promotionNames = getPromotionNames(promotions);
 
-        lines.forEach(line -> products.add(parseProduct(line)));
-        return products;
+        return fileLineReader.readLines(filePath).stream()
+            .map(this::parseProduct)
+            .filter(product -> promotionNames.contains(product.getPromotion()) ||
+                product.getPromotion().equals("null"))
+            .toList(); // 프로모션 진행 중에 있는 상품 or 일반 상품만 필터링
     }
-
 
     private Product parseProduct(String line) {
         return productParser.parse(line);
+    }
+
+    private List<String> getPromotionNames(List<Promotion> promotions) {
+        return promotions.stream()
+            .map(Promotion::getName)
+            .toList();
     }
 }
