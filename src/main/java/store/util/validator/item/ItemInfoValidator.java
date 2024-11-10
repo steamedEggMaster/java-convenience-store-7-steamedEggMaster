@@ -1,4 +1,4 @@
-package store.util.validator;
+package store.util.validator.item;
 
 import java.util.List;
 import store.model.domain.Item;

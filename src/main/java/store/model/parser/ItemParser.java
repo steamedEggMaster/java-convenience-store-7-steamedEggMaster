@@ -2,7 +2,7 @@ package store.model.parser;
 
 import store.model.domain.Item;
 import store.util.message.ErrorMessage;
-import store.util.validator.ItemFormValidator;
+import store.util.validator.item.ItemFormValidator;
 
 public class ItemParser {
     private final ItemFormValidator itemFormValidator;

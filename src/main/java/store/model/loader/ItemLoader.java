@@ -5,7 +5,7 @@ import java.util.List;
 import store.model.domain.Item;
 import store.model.domain.Product;
 import store.model.parser.ItemParser;
-import store.util.validator.ItemInfoValidator;
+import store.util.validator.item.ItemInfoValidator;
 
 public class ItemLoader {
     private final ItemParser itemParser;
