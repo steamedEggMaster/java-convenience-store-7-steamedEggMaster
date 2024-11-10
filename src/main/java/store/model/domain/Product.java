@@ -19,12 +19,20 @@ public class Product {
         return name;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public int getQuantity() {
         return quantity;
     }
 
     public String getPromotion() {
         return promotion;
+    }
+
+    public void decrementQuantity(int quantity) {
+        this.quantity -= quantity;
     }
 
     @Override
