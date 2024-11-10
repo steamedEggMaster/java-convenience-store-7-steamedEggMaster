@@ -29,6 +29,6 @@ public class ItemLoader {
 
     private void validateItem(List<Product> products, Item item) {
         itemInfoValidator.validateItemExists(products, item);
-        itemInfoValidator.validateSufficientQuantity(products, item);
+        itemInfoValidator.validateAvailableQuantity(products, item);
     }
 }

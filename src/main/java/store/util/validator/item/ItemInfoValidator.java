@@ -17,10 +17,10 @@ public class ItemInfoValidator {
         }
     }
 
-    public void validateSufficientQuantity(List<Product> products, Item item) {
+    public void validateAvailableQuantity(List<Product> products, Item item) {
         int availableQuantity = products.stream()
             .filter(product -> product.getName().equals(item.getName()))
-            .mapToInt(Product::getQuantity)
+            .mapToInt(Product::getInventory)
             .sum();
 
         if (availableQuantity < item.getQuantity()) {

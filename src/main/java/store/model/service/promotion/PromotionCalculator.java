@@ -22,10 +22,10 @@ public class PromotionCalculator {
     }
 
     private int calculatePromotionCount(Product product, Item item) {
-        if (item.getQuantity() <= product.getQuantity()) {
+        if (item.getQuantity() <= product.getInventory()) {
             return item.getQuantity() / (buy + get);
         }
-        return product.getQuantity() / (buy + get);
+        return product.getInventory() / (buy + get);
     }
 
     private void updateProduct(Product product) {

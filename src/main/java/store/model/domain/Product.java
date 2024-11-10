@@ -5,13 +5,13 @@ import java.text.DecimalFormat;
 public class Product {
     private final String name;
     private final int price;
-    private int quantity;
+    private int inventory;
     private final String promotion;
 
-    public Product(String name, int price, int quantity, String promotion) {
+    public Product(String name, int price, int inventory, String promotion) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
+        this.inventory = inventory;
         this.promotion = promotion;
     }
 
@@ -23,8 +23,8 @@ public class Product {
         return price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getInventory() {
+        return inventory;
     }
 
     public String getPromotion() {
@@ -32,7 +32,7 @@ public class Product {
     }
 
     public void decrementQuantity(int quantity) {
-        this.quantity -= quantity;
+        this.inventory -= quantity;
     }
 
     @Override
@@ -49,10 +49,10 @@ public class Product {
     }
 
     private String displayQuantity() {
-        if (quantity == 0) {
+        if (inventory == 0) {
             return "재고 없음";
         }
-        return quantity + "개";
+        return inventory + "개";
     }
 
     private String displayPromotion() {
