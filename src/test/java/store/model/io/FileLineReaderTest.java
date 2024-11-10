@@ -1,4 +1,4 @@
-package store.io;
+package store.model.io;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
