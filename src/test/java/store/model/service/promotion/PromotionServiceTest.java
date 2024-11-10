@@ -12,7 +12,6 @@ import store.model.domain.Item;
 import store.model.domain.Product;
 import store.model.domain.Promotion;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -53,13 +52,14 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(5, items.get(0).getQuantity());
+        assertEquals(6000, items.get(0).getTotalPrice());
         assertEquals(2, items.get(0).getBonus()); // bonus 추가됨
-        assertEquals(4000, items.get(0).getPrice());
+        assertEquals(2000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
 
         assertEquals(3, items.get(1).getQuantity());
         assertEquals(0, items.get(1).getBonus());
-        assertEquals(0, items.get(1).getPrice());
+        assertEquals(0, items.get(1).getTotalPrice());
         // 프로모션이 있는 Item만 계산하기 때문에 일반 상품은 계산되지 않음
     }
 
@@ -83,8 +83,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(5, items.get(0).getQuantity());
+        assertEquals(5000, items.get(0).getTotalPrice());
         assertEquals(1, items.get(0).getBonus()); // bonus 추가 안됨
-        assertEquals(4000, items.get(0).getPrice());
+        assertEquals(1000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
     }
 
@@ -108,8 +109,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(4, items.get(0).getQuantity());
+        assertEquals(4000, items.get(0).getTotalPrice());
         assertEquals(1, items.get(0).getBonus());
-        assertEquals(3000, items.get(0).getPrice()); // 총 3개가 계산됨
+        assertEquals(1000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
     }
 
@@ -133,8 +135,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(3, items.get(0).getQuantity());
+        assertEquals(3000, items.get(0).getTotalPrice()); // 총 2개가 계산됨
         assertEquals(1, items.get(0).getBonus());
-        assertEquals(2000, items.get(0).getPrice()); // 총 2개가 계산됨
+        assertEquals(1000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
     }
 
@@ -158,8 +161,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(12, items.get(0).getQuantity());
+        assertEquals(10000, items.get(0).getTotalPrice()); // 프로모션 및 질문 적용에 대한 값
         assertEquals(3, items.get(0).getBonus());
-        assertEquals(7000, items.get(0).getPrice()); // 프로모션 및 질문 적용에 대한 값
+        assertEquals(3000, items.get(0).getBonusPrice());
         assertEquals(2, items.get(0).getRemainingQuantity()); // 일반 재고에 적용될 값
         assertEquals(0, products.get(0).getInventory()); // 프로모션 재고 전부 소진
     }
@@ -184,8 +188,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(9, items.get(0).getQuantity());
+        assertEquals(9000, items.get(0).getTotalPrice());
         assertEquals(3, items.get(0).getBonus());
-        assertEquals(6000, items.get(0).getPrice());
+        assertEquals(3000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
         assertEquals(1, products.get(0).getInventory());
     }
@@ -210,8 +215,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(10, items.get(0).getQuantity());
+        assertEquals(10000, items.get(0).getTotalPrice());
         assertEquals(3, items.get(0).getBonus());
-        assertEquals(7000, items.get(0).getPrice());
+        assertEquals(3000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
         assertEquals(0, products.get(0).getInventory());
     }
@@ -236,8 +242,9 @@ class PromotionServiceTest {
         promotionService.applyPromotions(products, promotions, items);
 
         assertEquals(9, items.get(0).getQuantity());
+        assertEquals(9000, items.get(0).getTotalPrice());
         assertEquals(3, items.get(0).getBonus());
-        assertEquals(6000, items.get(0).getPrice());
+        assertEquals(3000, items.get(0).getBonusPrice());
         assertEquals(0, items.get(0).getRemainingQuantity());
         assertEquals(1, products.get(0).getInventory());
     }
