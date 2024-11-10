@@ -5,15 +5,21 @@ import store.model.domain.Product;
 import store.model.domain.Promotion;
 
 public class PromotionCalculator {
+    private final PromotionDecisionHandler promotionDecisionHandler;
     private int buy;
     private int get;
     private int count;
+
+    public PromotionCalculator() {
+        this.promotionDecisionHandler = new PromotionDecisionHandler();
+    }
 
     public void calculatePromotion(Product product, Promotion promotion, Item item) {
         setPromotionFields(promotion);
         count = calculatePromotionCount(product, item);
         updateProduct(product);
         updateItem(product, item);
+        promotionDecisionHandler.applyBasedOnRemainingQuantity(product, promotion, item);
     }
 
     private void setPromotionFields(Promotion promotion) {
@@ -29,7 +35,7 @@ public class PromotionCalculator {
     }
 
     private void updateProduct(Product product) {
-        product.decrementQuantity(count * (buy + get));
+        product.decrementInventory(count * (buy + get));
     }
 
     private void updateItem(Product product, Item item) {

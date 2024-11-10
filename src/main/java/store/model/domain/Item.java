@@ -23,12 +23,20 @@ public class Item {
         return quantity;
     }
 
+    public int getRemainingQuantity() {
+        return remainingQuantity;
+    }
+
     public int getPrice() {
         return price;
     }
 
     public int getBonus() {
         return bonus;
+    }
+
+    public void decreaseQuantity(int quantity) {
+        this.quantity -= quantity;
     }
 
     public void decreaseRemainingQuantity(int quantity) {
