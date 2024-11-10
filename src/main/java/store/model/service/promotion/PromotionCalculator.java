@@ -39,8 +39,8 @@ public class PromotionCalculator {
     }
 
     private void updateItem(Product product, Item item) {
-        item.incrementPrice(count * buy * product.getPrice());
-        item.incrementBonus(count * get);
+        item.increaseTotalPrice(count * (buy + get) * product.getPrice());
+        item.increaseBonus(count * get, product.getPrice() * count);
         item.decreaseRemainingQuantity(count * (buy + get));
     }
 }

@@ -15,7 +15,8 @@ public class DecisionActionService {
 
     public void applyBonus(Product product, Promotion promotion, Item item) {
         product.decrementInventory(promotion.getGet());
-        item.incrementBonus(promotion.getGet());
+        item.increaseBonus(promotion.getGet(), product.getPrice());
+        item.increaseTotalPrice(product.getPrice());
     }
 
     public void decreaseQuantity(Item item) {
@@ -25,7 +26,7 @@ public class DecisionActionService {
 
     private void applyPartialPurchase(Product product, Item item) {
         int availableInventory = product.getInventory();
-        item.incrementPrice(product.getPrice() * availableInventory);
+        item.increaseTotalPrice(product.getPrice() * availableInventory);
         item.decreaseRemainingQuantity(availableInventory);
         product.decrementInventory(availableInventory);
     }
@@ -33,7 +34,7 @@ public class DecisionActionService {
     private void applyFullPurchase(Product product, Item item) {
         int remainingQuantity = item.getRemainingQuantity();
         product.decrementInventory(remainingQuantity);
-        item.incrementPrice(product.getPrice() * remainingQuantity);
+        item.increaseTotalPrice(product.getPrice() * remainingQuantity);
         item.decreaseRemainingQuantity(remainingQuantity);
     }
 }
