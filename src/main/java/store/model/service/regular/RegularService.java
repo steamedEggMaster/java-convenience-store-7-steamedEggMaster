@@ -14,8 +14,7 @@ public class RegularService {
         this.regularCalculator = new RegularCalculator();
     }
 
-    public void calculateRegularPrice(
-        List<Product> products, List<Item> items) {
+    public void calculateRegularPrice(List<Product> products, List<Item> items) {
         for (Item item : items) {
             List<Product> matchingProducts = productFilter.filterByItemName(products, item);
             calculateRegular(matchingProducts, item);

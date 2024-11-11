@@ -1,4 +1,4 @@
-package store.model.loader;
+package store.model.loader.file;
 
 import java.util.ArrayList;
 import java.util.List;

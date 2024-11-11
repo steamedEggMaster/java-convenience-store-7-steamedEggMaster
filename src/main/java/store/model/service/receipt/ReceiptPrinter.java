@@ -1,9 +1,9 @@
-package store.model.service;
+package store.model.service.receipt;
 
 import java.text.NumberFormat;
 import java.util.List;
 import store.model.domain.Item;
-import store.model.service.membership.MembershipCalculator;
+import store.model.service.membership.MembershipService;
 
 public class ReceiptPrinter {
     private static final String RECEIPT_HEADER_MESSAGE = "==============W 편의점================";
@@ -14,15 +14,17 @@ public class ReceiptPrinter {
     private static final String PROMOTION_DISCOUNT_MESSAGE = "행사할인\t\t\t-";
     private static final String MEMBERSHIP_DISCOUNT_MESSAGE = "멤버십할인\t\t\t-";
     private static final String COST_MESSAGE = "내실돈\t\t\t";
-    private final MembershipCalculator membershipCalculator;
+    private final MembershipService membershipService;
     private List<Item> items;
+    private int membershipDiscount;
 
     public ReceiptPrinter() {
-        this.membershipCalculator = new MembershipCalculator();
+        this.membershipService = new MembershipService();
     }
 
-    public void print(List<Item> items) {
+    public void print(List<Item> items, int membershipDiscount) {
         this.items = items;
+        this.membershipDiscount = membershipDiscount;
         System.out.println();
         printHeader();
         printMiddle();
@@ -65,7 +67,7 @@ public class ReceiptPrinter {
         int totalQuantity = getTotalQuantity();
         int totalPrice = getTotalPrice();
 
-        System.out.print(TOTAL_PRICE_MESSAGE + totalQuantity + "\t" + formatPrice(totalPrice));
+        System.out.println(TOTAL_PRICE_MESSAGE + totalQuantity + "\t" + formatPrice(totalPrice));
     }
 
     private void printPromotionDiscount() {
@@ -75,12 +77,11 @@ public class ReceiptPrinter {
     }
 
     private void printMembershipDiscount() {
-        int membershipDiscount = getMembershipDiscount();
         System.out.println(MEMBERSHIP_DISCOUNT_MESSAGE + formatPrice(membershipDiscount));
     }
 
     private void printCost() {
-        int cost = getTotalPrice() - getTotalBonusPrice() - getMembershipDiscount();
+        int cost = getTotalPrice() - getTotalBonusPrice() - membershipDiscount;
         System.out.println(COST_MESSAGE + formatPrice(cost));
     }
 
@@ -100,10 +101,6 @@ public class ReceiptPrinter {
         return items.stream()
             .mapToInt(Item::getBonusPrice)
             .sum();
-    }
-
-    private int getMembershipDiscount() {
-        return membershipCalculator.calculateMembershipDiscount(items);
     }
 
     private String formatPrice(int price) {

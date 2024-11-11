@@ -5,20 +5,20 @@ import store.model.domain.Item;
 import store.model.domain.MembershipDiscountType;
 import store.model.service.decision.DecisionInputService;
 
-public class MembershipCalculator {
+public class MembershipService {
     private final DecisionInputService decisionInputService;
 
-    public MembershipCalculator() {
+    public MembershipService() {
         this.decisionInputService = new DecisionInputService();
     }
 
     public int calculateMembershipDiscount(List<Item> items) {
         String opinion = decisionInputService.getMembershipDiscountDecision();
-        int totalRegularPrice = calculateTotalRegularPrice(items);
+        int totalRegularPrice = getTotalRegularPrice(items);
         return calculateBasedOnDecision(opinion, totalRegularPrice);
     }
 
-    private int calculateTotalRegularPrice(List<Item> items) {
+    private int getTotalRegularPrice(List<Item> items) {
         return items.stream()
             .mapToInt(Item::getRegularPrice)
             .sum();

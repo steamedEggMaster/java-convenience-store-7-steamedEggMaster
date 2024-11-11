@@ -11,14 +11,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import store.model.domain.Item;
 
-class MembershipCalculatorTest {
+class MembershipServiceTest {
 
-    private MembershipCalculator membershipCalculator;
+    private MembershipService membershipService;
     private InputStream originalIn;
 
     @BeforeEach
     void setUp() {
-        membershipCalculator = new MembershipCalculator();
+        membershipService = new MembershipService();
         originalIn = System.in;
     }
 
@@ -38,7 +38,7 @@ class MembershipCalculatorTest {
         items.get(0).increaseRegularPrice(1000 * 8);
         items.get(1).increaseRegularPrice(1200 * 5);
 
-        int discount = membershipCalculator.calculateMembershipDiscount(items);
+        int discount = membershipService.calculateMembershipDiscount(items);
         int expectedDiscount = (int) ((14000) * 0.3);
 
         assertEquals(expectedDiscount, discount);
@@ -55,7 +55,7 @@ class MembershipCalculatorTest {
         items.get(0).increaseRegularPrice(1000 * 8);
         items.get(1).increaseRegularPrice(1200 * 5);
 
-        int discount = membershipCalculator.calculateMembershipDiscount(items);
+        int discount = membershipService.calculateMembershipDiscount(items);
         int expectedDiscount = 0;
 
         assertEquals(expectedDiscount, discount);

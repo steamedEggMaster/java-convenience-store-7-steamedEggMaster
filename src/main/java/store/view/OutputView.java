@@ -3,7 +3,7 @@ package store.view;
 import java.util.List;
 import store.model.domain.Item;
 import store.model.domain.Product;
-import store.model.service.ReceiptPrinter;
+import store.model.service.receipt.ReceiptPrinter;
 
 public class OutputView {
     private static final String GREETING_MESSAGE = "안녕하세요. W편의점입니다.";
@@ -17,12 +17,12 @@ public class OutputView {
     public void printProducts(List<Product> products) {
         System.out.println(GREETING_MESSAGE);
         System.out.println(PRODUCTS_DESCRIPTION);
-
+        System.out.println();
         products.forEach(System.out::println);
         System.out.println();
     }
 
-    public void printReceipt(List<Item> items) {
-        receiptPrinter.print(items);
+    public void printReceipt(List<Item> items, int membershipDiscount) {
+        receiptPrinter.print(items, membershipDiscount);
     }
 }

@@ -12,9 +12,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import store.model.domain.Promotion;
-import store.model.io.FileLineReader;
-import store.model.loader.PromotionLoader;
-import store.model.parser.PromotionParser;
+import store.model.loader.file.PromotionLoader;
 
 public class PromotionLoaderTest {
     private File tempFile;

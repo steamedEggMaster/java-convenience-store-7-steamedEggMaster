@@ -13,9 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import store.model.domain.Product;
 import store.model.domain.Promotion;
-import store.model.io.FileLineReader;
-import store.model.loader.ProductLoader;
-import store.model.parser.ProductParser;
+import store.model.loader.file.ProductLoader;
 
 public class ProductLoaderTest {
     private File tempFile;

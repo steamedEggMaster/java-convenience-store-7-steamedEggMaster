@@ -17,6 +17,7 @@ public class DecisionActionService {
         product.decrementInventory(promotion.getGet());
         item.increaseBonus(promotion.getGet(), product.getPrice());
         item.increaseTotalPrice(product.getPrice());
+        item.increaseQuantity(promotion.getGet());
     }
 
     public void decreaseQuantity(Item item) {
