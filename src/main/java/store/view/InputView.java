@@ -8,6 +8,7 @@ public class InputView {
     private static final String BONUS_ADDITION_PROMPT = "추가하시겠습니까? (Y/N)";
     private static final String PURCHASE_DECISION_PROMPT = "그래도 구매하시겠습니까? (Y/N)";
     private static final String MEMBERSHIP_DISCOUNT_PROMPT = "멤버십 할인을 받으시겠습니까? (Y/N)";
+    private static final String ADDITIONAL_PURCHASE_PROMPT = "감사합니다. 구매하고 싶은 다른 상품이 있나요? (Y/N)";
 
     public String readItem() {
         System.out.print(PRODUCT_SELECTION_PROMPT);
@@ -35,6 +36,13 @@ public class InputView {
     public String confirmMembershipDiscount() {
         System.out.println();
         System.out.println(MEMBERSHIP_DISCOUNT_PROMPT);
+
+        return Console.readLine();
+    }
+
+    public String confirmAdditionalPurchase() {
+        System.out.println();
+        System.out.println(ADDITIONAL_PURCHASE_PROMPT);
 
         return Console.readLine();
     }

@@ -47,4 +47,15 @@ public class DecisionInputService {
             }
         }
     }
+
+    public String getAdditionalPurchaseDecision() {
+        while (true) {
+            try {
+                String input = inputView.confirmAdditionalPurchase();
+                return opinionParser.parse(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
