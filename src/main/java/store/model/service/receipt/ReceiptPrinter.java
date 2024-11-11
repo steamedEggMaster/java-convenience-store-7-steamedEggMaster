@@ -13,7 +13,7 @@ public class ReceiptPrinter {
     private static final String TOTAL_PRICE_MESSAGE = "총구매액\t\t";
     private static final String PROMOTION_DISCOUNT_MESSAGE = "행사할인\t\t\t-";
     private static final String MEMBERSHIP_DISCOUNT_MESSAGE = "멤버십할인\t\t\t-";
-    private static final String COST_MESSAGE = "내실돈\t\t\t";
+    private static final String COST_MESSAGE = "내실돈\t\t\t ";
     private List<Item> items;
     private int membershipDiscount;
 
