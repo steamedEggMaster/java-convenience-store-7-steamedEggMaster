@@ -1,4 +1,4 @@
-package store.model.service.promotion.decision;
+package store.model.service.decision;
 
 import store.model.domain.Item;
 import store.model.domain.Promotion;
@@ -30,6 +30,17 @@ public class DecisionInputService {
         while (true) {
             try {
                 String input = inputView.confirmBonus(item.getName(), promotion.getGet());
+                return opinionParser.parse(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public String getMembershipDiscountDecision() {
+        while (true) {
+            try {
+                String input = inputView.confirmMembershipDiscount();
                 return opinionParser.parse(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

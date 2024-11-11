@@ -3,8 +3,8 @@ package store.model.service.promotion;
 import store.model.domain.Item;
 import store.model.domain.Product;
 import store.model.domain.Promotion;
-import store.model.service.promotion.decision.DecisionInputService;
-import store.model.service.promotion.decision.DecisionActionService;
+import store.model.service.decision.DecisionInputService;
+import store.model.service.decision.DecisionActionService;
 
 public class PromotionDecisionHandler {
     private final DecisionInputService decisionInputService;

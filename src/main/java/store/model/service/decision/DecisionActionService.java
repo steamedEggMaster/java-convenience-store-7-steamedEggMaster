@@ -1,4 +1,4 @@
-package store.model.service.promotion.decision;
+package store.model.service.decision;
 
 import store.model.domain.Item;
 import store.model.domain.Product;
