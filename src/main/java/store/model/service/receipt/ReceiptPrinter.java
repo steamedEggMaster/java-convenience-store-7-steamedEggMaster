@@ -14,13 +14,8 @@ public class ReceiptPrinter {
     private static final String PROMOTION_DISCOUNT_MESSAGE = "행사할인\t\t\t-";
     private static final String MEMBERSHIP_DISCOUNT_MESSAGE = "멤버십할인\t\t\t-";
     private static final String COST_MESSAGE = "내실돈\t\t\t";
-    private final MembershipService membershipService;
     private List<Item> items;
     private int membershipDiscount;
-
-    public ReceiptPrinter() {
-        this.membershipService = new MembershipService();
-    }
 
     public void print(List<Item> items, int membershipDiscount) {
         this.items = items;
