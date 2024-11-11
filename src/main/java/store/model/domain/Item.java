@@ -7,6 +7,7 @@ public class Item {
     private int totalPrice;
     private int bonus;
     private int bonusPrice;
+    private int regularPrice;
 
     public Item(String name, int quantity) {
         this.name = name;
@@ -15,6 +16,7 @@ public class Item {
         this.totalPrice = 0;
         this.bonus = 0;
         this.bonusPrice = 0;
+        this.regularPrice = 0;
     }
 
     public String getName() {
@@ -41,6 +43,10 @@ public class Item {
         return bonusPrice;
     }
 
+    public int getRegularPrice() {
+        return regularPrice;
+    }
+
     public void decreaseQuantity(int quantity) {
         this.quantity -= quantity;
     }
@@ -56,5 +62,9 @@ public class Item {
     public void increaseBonus(int bonus, int price) {
         this.bonus += bonus;
         this.bonusPrice += price;
+    }
+
+    public void increaseRegularPrice(int price) {
+        this.regularPrice += price;
     }
 }

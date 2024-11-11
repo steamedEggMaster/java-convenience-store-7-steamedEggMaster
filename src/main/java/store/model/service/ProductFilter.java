@@ -18,4 +18,10 @@ public class ProductFilter {
             .filter(product -> !product.getPromotion().equals("null"))
             .toList();
     }
+
+    public List<Product> filterRegular(List<Product> products) {
+        return products.stream()
+            .filter(product -> product.getPromotion().equals("null"))
+            .toList();
+    }
 }
